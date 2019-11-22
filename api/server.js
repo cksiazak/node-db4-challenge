@@ -7,6 +7,9 @@ const helmet = require('helmet');
 server.use(helmet());
 server.use(express.json({ extended: false }));
 
+// Routes
+server.use('/api/recipes', require('../routes/recipes'));
+
 server.get('/', (req, res) => {
   res.status(418).send('Server Started');
 });

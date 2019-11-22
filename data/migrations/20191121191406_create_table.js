@@ -38,6 +38,7 @@ exports.up = function(knex) {
       tbl.primary(['recipe_id', 'ingredient_id']);
     })
     .createTable('instructions', tbl => {
+      tbl.increments();
       tbl
         .integer('recipe_id')
         .unsigned()
@@ -48,8 +49,6 @@ exports.up = function(knex) {
         .onUpdate('CASCADE');
 
       tbl.string('steps', 255).notNullable();
-
-      tbl.primary(['recipe_id', 'steps']);
     });
 };
 
